@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" integrity="sha256-D7G7ynNkbo4rk8gujYshlkexPUtEDEjjOCkLmmhbjeE= sha384-CmLV3WR+cw/TcN50vJSYAs2EAzhDD77tQvGcmoZ1KEzxtpl2K5xkrpFz9N2H9ClN sha512-5kzQwP+NMBwPa9n+YJNDYtznvoWvV8nD4ccZ5C+HhM9we8kCW1j9HzQabe6ydJDj+oFkrtnMdmBTI6YCVEyCIA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <script src="~/Scripts/es6-dist/bundle.js"></script>
+    @RenderSection("headscripts", required: false)
+</head>
+<body>
+    @Html.AntiForgeryToken()
+    @RenderBody()
+    <script id="__bs_script__">
+    //<![CDATA[
+        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+</body>
+@RenderSection("scripts", required: false)
+</html>
