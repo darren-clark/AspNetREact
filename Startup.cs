@@ -21,7 +21,7 @@ namespace AspNetReact
         {
             public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
             {
-
+                var message = formatter(state, exception);
             }
             public bool IsEnabled(LogLevel logLevel)
             {
@@ -32,6 +32,7 @@ namespace AspNetReact
                 throw new NotImplementedException();
             }
         }
+
         public void Configuration(IAppBuilder app)
         {
             var properties = new AppProperties(app.Properties);
@@ -39,10 +40,11 @@ namespace AspNetReact
             var path = HostingEnvironment.MapPath("~/Scripts/es6");
             services.AddNodeServices(opts =>
             {
-                opts.LaunchWithDebugging = false;
+                opts.LaunchWithDebugging = true;
                 opts.ProjectPath = path;
                 opts.ApplicationStoppingToken = properties.OnAppDisposing;
                 opts.NodeInstanceOutputLogger = new NodeLogger();
+                opts.WatchFileExtensions = new string[0];
             });
 
             var builder = new ContainerBuilder();
@@ -51,7 +53,11 @@ namespace AspNetReact
             var container = builder.Build();
 
             var nodeServices = container.Resolve<INodeServices>();
-            var foo = nodeServices.InvokeAsync<string>("node_modules/webpack","--mode", "development", "--watch").Result;
+            var foo = nodeServices.InvokeAsync<string>(properties.OnAppDisposing, "webpack-server-entry.js","--mode","development","--watch");
+            foo.ContinueWith(t =>
+            {   
+
+            });
         }
     }
 }

@@ -22,6 +22,7 @@
     "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
+    "moment": "^2.24.0",
     "webpack": "^4.41.2",
     "webpack-aspnet-middleware": "^2.3.1",
     "webpack-cli": "^3.3.10",

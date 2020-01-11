@@ -3,6 +3,7 @@
 var path = require("path");
 var WebpackNotifierPlugin = require("webpack-notifier");
 var BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+var webpack = require("webpack");
 
 module.exports = {
     entry: "./index.js",
@@ -22,5 +23,9 @@ module.exports = {
         ]
     },
     devtool: "inline-source-map",
-    plugins: [new WebpackNotifierPlugin(), new BrowserSyncPlugin()]
+    plugins: [
+        new WebpackNotifierPlugin(),
+        new BrowserSyncPlugin(),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    ]
 };

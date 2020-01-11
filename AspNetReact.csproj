@@ -179,6 +179,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Scripts\es6\index.js" />
+    <Content Include="Scripts\es6\webpack-server-entry.js" />
     <Content Include="Scripts\es6\webpack.config.js" />
     <Content Include="Scripts\es6\package.json" />
     <Content Include="Scripts\es6\.babelrc" />
